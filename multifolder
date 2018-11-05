@@ -1,0 +1,11 @@
+#store a .csv file in "$basefolder" have firsname and lastname colum
+$basefolder = 'C:\Temp\userhome'
+#import that csv file
+$employees = Import-Csv -Path C:\Temp\employee.csv
+foreach($employee in $employees){
+#the name of the folder will first alphabet of firstname and lastname
+$username="$($employee.firstname.Substring(0,1))$($employee.lastname)"
+#Creating the all folder 
+New-Item -Path $basefolder -Name $username -Type directory
+}
+
