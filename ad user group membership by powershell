@@ -1,0 +1,6 @@
+$users = Get-Content "C:\Temp\myfolser\aduser.txt"
+$adjob = foreach ($user in $users) {
+    Get-ADUser –Identity $user –Properties MemberOf
+}
+
+$adjob | Select-Object Name,@{N='Group';E={$_.MemberOf -replace '^CN=([^,]+),OU=.+$','$1'}}|Out-GridView 
