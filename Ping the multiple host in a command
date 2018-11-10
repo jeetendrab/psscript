@@ -1,0 +1,4 @@
+#store the list of computers name in a text file
+$comp = Get-Content -Path C:\Temp\conputers.txt
+foreach ($ip in $comp)
+{Test-Connection -ComputerName $ip | Select-Object -Property IPv4address,address,responsetimetolive}
