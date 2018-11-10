@@ -1,3 +1,4 @@
+#store the users identity like user ID in a notepad file
 $users = Get-Content "C:\Temp\myfolser\aduser.txt"
 $adjob = foreach ($user in $users) {
     Get-ADUser –Identity $user –Properties MemberOf
