@@ -1,0 +1,3 @@
+#This command will help to export all the "A" records (hostname,and associated IP address to the Record)
+
+Get-DnsServerResourceRecord -ZoneName test.local|where{$_.recordtype -eq "A"}|select hostname,RecordType,@{name="IP Address";e={$_.RecordData.Ipv4address}}|Out-GridView
